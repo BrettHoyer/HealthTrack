@@ -1,0 +1,22 @@
+<h1>Listing exercises</h1>
+
+<% @exercises.each do |exercise| %>
+    <%= exercise.name %>
+    <ul>
+  <% exercise.turns.each do |turn| %>
+  <li>
+  <%= "Set Number: #{turn.turn_num}" %>
+  <%= "Reps: #{turn.reps}" %>
+  <%= "Weight: #{turn.weight}" %>
+  <%= link_to 'Show', turn %>
+    <%= link_to 'Edit', edit_turn_path(turn) %>
+    <%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>
+  <% end %>
+  <%= link_to 'New Turn', new_turn_url %>
+</ul>
+<% end %>
+
+<br />
+
+<%= link_to 'New Exercise', new_exercise_path %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Total:</b>
+  <%= @turn.total %>
+</p>
+
+<p>
+  <b>Reps:</b>
+  <%= @turn.reps %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @turn.weight %>
+</p>
+
+
+<%= link_to 'Edit', edit_turn_path(@turn) %> |
+<%= link_to 'Back', turns_path %>

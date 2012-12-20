@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meathead</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav>
+		<% if session[:user_id] %>
+		Welcome, <%= User.find_by_id(session[:user_id]).name.capitalize %>. 
+
+		<%= link_to "Logout", sessions_destroy_url %>
+		
+		 <% else %>
+		 <%= link_to "login", sessions_new_url %>
+		
+		<% end %> 
+	</nav>
+
+<%= yield %>
+
+</body>
+</html>
