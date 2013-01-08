@@ -44,7 +44,7 @@ class TurnsController < ApplicationController
 
     respond_to do |format|
       if @turn.save
-        format.html { redirect_to @turn, notice: 'Turn was successfully created.' }
+        format.html { redirect_to exercises_path, notice: 'Turn was successfully created.' }
         format.json { render json: @turn, status: :created, location: @turn }
       else
         format.html { render action: "new" }
