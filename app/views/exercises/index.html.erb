@@ -1,4 +1,5 @@
-<h1>Listing exercises</h1>
+<div class='container-fluid'>
+  <h1><%= User.find_by_id(session[:user_id]).name.capitalize %>'s Exercises</h1>
 
 <% @exercises.each do |exercise| %>
     <%= exercise.name %>
@@ -13,10 +14,11 @@
     <%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %>
   </li>
   <% end %>
-  <%= link_to 'New Turn', new_turn_url %>
+  <div class='btn btn-mini'><%= link_to 'New Turn', new_turn_url %></div>
 </ul>
 <% end %>
 
 <br />
 
 <%= link_to 'New Exercise', new_exercise_path %>
+</div>

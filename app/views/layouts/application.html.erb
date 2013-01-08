@@ -7,17 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav>
-		<% if session[:user_id] %>
+  <div class='navbar-inverse'>
+	<nav class='navbar-inner'>
+		<%= link_to "New Exercise", new_exercise_url, :class => 'btn btn-warning' %>
+		<%= link_to "New Set", new_turn_url, :class => 'btn btn-danger' %>
+		<div class='loginlogout'>
+			<% if session[:user_id] %>
 		Welcome, <%= User.find_by_id(session[:user_id]).name.capitalize %>. 
 
-		<%= link_to "Logout", sessions_destroy_url %>
+		<%= link_to "Logout", sessions_destroy_url, :class => 'btn btn-primary' %>
 		
 		 <% else %>
-		 <%= link_to "login", sessions_new_url %>
+		<%= link_to "Login", sessions_new_url, :class => 'btn btn-primary' %>
 		
-		<% end %> 
+		<% end %>
+		</div> 
 	</nav>
+  </div>
 
 <%= yield %>
 

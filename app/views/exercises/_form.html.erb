@@ -1,4 +1,4 @@
-<%= form_for(@exercise) do |f| %>
+<div class='hero-unit'><%= form_for(@exercise) do |f| %>
   <% if @exercise.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
@@ -26,3 +26,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>

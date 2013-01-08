@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :exercise_id %><br />
-    <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
+    <%= f.collection_select :exercise_id, Exercise.where(:user_id => session[:user_id]), :id, :name %>
   </div>
    <%= f.date_select :date, :default => Date.today, :order => [:month, :day, :year] %>
   <div class="actions">

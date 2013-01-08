@@ -60,7 +60,7 @@ class TurnsController < ApplicationController
 
     respond_to do |format|
       if @turn.update_attributes(params[:turn])
-        format.html { redirect_to @turn, notice: 'Turn was successfully updated.' }
+        format.html { redirect_to exercises_url, notice: 'Turn was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class TurnsController < ApplicationController
     @turn.destroy
 
     respond_to do |format|
-      format.html { redirect_to turns_url }
+      format.html { redirect_to exercises_url }
       format.json { head :no_content }
     end
   end
