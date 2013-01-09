@@ -14,6 +14,10 @@
     <%= f.hidden_field :user_id, :value => session[:user_id] %>
   </div>
   <div class="field">
+    <%= f.label :category_id, "Body Part" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>

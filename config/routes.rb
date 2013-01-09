@@ -1,4 +1,7 @@
 Meathead::Application.routes.draw do
+
+  resources :categories
+
   resources :users
 
   get "sessions/new"

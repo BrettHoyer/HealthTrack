@@ -3,6 +3,7 @@ class ExercisesController < ApplicationController
   # GET /exercises.json
   def index
     @exercises = Exercise.where(:user_id => session[:user_id])
+    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb

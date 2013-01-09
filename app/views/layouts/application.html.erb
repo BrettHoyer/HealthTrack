@@ -13,7 +13,7 @@
 		<%= link_to "New Set", new_turn_url, :class => 'btn btn-danger' %>
 		<div class='loginlogout'>
 			<% if session[:user_id] %>
-		Welcome, <%= User.find_by_id(session[:user_id]).name.capitalize %>. 
+		Welcome, <%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>. 
 
 		<%= link_to "Logout", sessions_destroy_url, :class => 'btn btn-primary' %>
 		
