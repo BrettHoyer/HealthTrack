@@ -1,9 +1,16 @@
 class ExercisesController < ApplicationController
+  before_filter :require_categories
+
+  def require_categories
+    if Category.where(:user_id => session[:user_id]).empty?
+      redirect_to new_category_url
+    end
+  end
   # GET /exercises
   # GET /exercises.json
   def index
     @exercises = Exercise.where(:user_id => session[:user_id])
-    @categories = Category.all
+    @categories = Category.where(:user_id => session[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb

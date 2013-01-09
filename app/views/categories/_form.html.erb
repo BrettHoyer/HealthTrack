@@ -11,6 +11,7 @@
     </div>
   <% end %>
   <div class='field'>
+    <%= f.hidden_field :user_id, :value => session[:user_id] %>
     <%= f.label :name, "Body Part" %>
     <%= f.text_field :name %>
   </div>

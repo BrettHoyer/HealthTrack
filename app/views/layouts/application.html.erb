@@ -11,6 +11,7 @@
 	<nav class='navbar-inner'>
 		<%= link_to "New Exercise", new_exercise_url, :class => 'btn btn-warning' %>
 		<%= link_to "New Set", new_turn_url, :class => 'btn btn-danger' %>
+		<%= link_to "New Body Part", new_category_url, :class => 'btn btn-success' %>
 		<div class='loginlogout'>
 			<% if session[:user_id] %>
 		Welcome, <%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>. 
