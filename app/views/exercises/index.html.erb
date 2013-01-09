@@ -1,5 +1,5 @@
 <div class='container-fluid'>
-  <h1><%= User.find_by_id(session[:user_id]).name.capitalize %>'s Exercises</h1>
+  <h1><%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises</h1>
 
 <% @exercises.each do |exercise| %>
     <%= exercise.name %>
@@ -14,7 +14,8 @@
     <%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %>
   </li>
   <% end %>
-  <div class='btn btn-mini'><%= link_to 'New Turn', new_turn_url %></div>
+
+  <div class='btn btn-mini'><%= link_to 'New Turn', new_turn_url(:exercise_id => exercise.id) %></div>
 </ul>
 <% end %>
 

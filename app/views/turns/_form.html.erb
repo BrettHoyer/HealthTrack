@@ -10,25 +10,24 @@
       </ul>
     </div>
   <% end %>
-
+  <h3>Exercise: <%= Exercise.find_by_id(params[:exercise_id]).name %></h3> 
   <div class="field">
-    <%= f.label :turn_num %><br />
+    <%= f.label :turn_num, 'Set Number'%><br />
     <%= f.select :turn_num, 1..10 %>
   </div>
   <div class="field">
     <%= f.label :reps %><br />
-    <%= f.select :reps, 1..100 %>
+    <%= f.select :reps, 1..100%>
   </div>
   <div class="field">
     <%= f.label :weight %><br />
     <%= f.select :weight, options_for_select((10..400).step(5).to_a.map{|s| ["#{s}", s]}) %>
   </div>
   <div class="field">
-    <%= f.label :exercise_id %><br />
-    <%= f.collection_select :exercise_id, Exercise.where(:user_id => session[:user_id]), :id, :name %>
-  </div>
+    <%= f.hidden_field :exercise_id, :value => params[:exercise_id] %>
+  </div></br>
    <%= f.date_select :date, :default => Date.today, :order => [:month, :day, :year] %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit Set', :class => 'btn btn-success' %>
   </div>
 <% end %>
