@@ -1,31 +1,32 @@
-<div class='container-fluid'>
+
   <h1><%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises</h1>
 
   <% @categories.each do |category| %>
     <h3><%= category.name %></h3>
+    <%= link_to "Delete Category", category_url(category.id), :method => 'delete', :confirm => 'Are you sure?' %>
 
     <% category.exercises.each do |exercise| %>
-        <h5><%= exercise.name %></h5>
-    <table border='1'>
-      <% exercise.turns.each do |turn| %>
-        <tr>  
-          <td><span class="label">Set Number:</span> <%= turn.turn_num %></td>
-          <td><span class="label label-info">Number of Reps:</span> <%= turn.reps %></td>
-          <td><span class="label label-success">Weight:</span> <%= turn.weight %></td>
-          <td><span class="label label-default">Date:</span> <%= turn.date.strftime("%m/%d/%y") %></td>
-          <td>
-             <%= link_to 'Show', turn %>
-            <%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id) %>
-            <%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-      <% end %>
-    </table><br />
-      <div class='btn btn-mini'><%= link_to 'New Set', new_turn_url(:exercise_id => exercise.id) %></div><br />
-    </ul>
+     
+    <div class='exercisetable'>    <h5><%= exercise.name %></h5>
+        <table border='1'>
+          <% exercise.turns.each do |turn| %>
+            <tr>  
+              <td><span class="label">Set Number:</span> <%= turn.turn_num %></td>
+              <td><span class="label label-info">Number of Reps:</span> <%= turn.reps %></td>
+              <td><span class="label label-success">Weight:</span> <%= turn.weight %></td>
+              <td><span class="label label-default">Date:</span> <%= turn.date.strftime("%m/%d/%y") %></td>
+              <td>
+                 <%= link_to 'Show', turn %>
+                <%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id) %>
+                <%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+          <% end %>
+        </table><br />
+      <%= link_to "New Set", new_turn_url(:exercise_id => exercise.id), :class => 'btn btn-mini btn-danger' %>  
+    </div>
     <% end %>
    <% end %> 
     <br />
 
-      <div class='btn btn-inverse'><%= link_to 'New Exercise', new_exercise_path %></div>
-    </div>
+  

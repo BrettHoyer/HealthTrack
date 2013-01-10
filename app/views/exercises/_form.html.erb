@@ -15,7 +15,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id, "Body Part" %>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <%= f.collection_select :category_id, Category.where(:user_id => session[:user_id]), :id, :name %>
   </div>
   <div class="field">
     <%= f.label :name %><br />

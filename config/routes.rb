@@ -1,5 +1,7 @@
 Meathead::Application.routes.draw do
 
+  resources :runs
+
   resources :categories
 
   resources :users
