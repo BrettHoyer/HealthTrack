@@ -1,6 +1,9 @@
 class Run < ActiveRecord::Base
   attr_accessible :date, :distance, :time, :user_id
 
+  def self.mins_per_mile(date)
+  	where("date(date) = ?", date).minutes_per_mile
+  end
   def minutes_per_mile
   	t= Array.new
   	self.time.split(":").each do |num|

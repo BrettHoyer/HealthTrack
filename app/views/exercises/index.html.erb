@@ -9,12 +9,18 @@
      
     <div class='exercisetable'>    <h5><%= exercise.name %></h5>
         <table border='1'>
+           <tr>
+              <th class="label">Set Number:</th> 
+              <th class="label label-info">Number of Reps:</th>
+              <th class="label label-success">Weight:</th>  
+              <th class="label label-default">Date:</th> 
+            </tr>  
           <% exercise.turns.each do |turn| %>
             <tr>  
-              <td><span class="label">Set Number:</span> <%= turn.turn_num %></td>
-              <td><span class="label label-info">Number of Reps:</span> <%= turn.reps %></td>
-              <td><span class="label label-success">Weight:</span> <%= turn.weight %></td>
-              <td><span class="label label-default">Date:</span> <%= turn.date.strftime("%m/%d/%y") %></td>
+              <td><%= turn.turn_num %></td>
+              <td><%= turn.reps %></td>
+              <td><%= turn.weight %></td>
+              <td><%= turn.date.strftime("%m/%d/%y") %></td>
               <td>
                  <%= link_to 'Show', turn %>
                 <%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id) %>
@@ -29,4 +35,6 @@
    <% end %> 
     <br />
 
+
+  <div id="chart_div" style="width: 900px; height: 500px;"></div>
   

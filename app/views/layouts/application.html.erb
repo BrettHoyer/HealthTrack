@@ -3,7 +3,7 @@
 <head>
   <title>Meathead</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery-1.8.3.min", "highcharts" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,6 +11,8 @@
 	<nav class='navbar-inner'>
 		<%= link_to "New Body Part", new_category_url, :class => 'btn btn-success' %>
 		<%= link_to "New Exercise", new_exercise_url, :class => 'btn btn-warning' %>
+		<%= link_to "Running", runs_url, :class => 'btn btn-warning' %>
+		<%= link_to "Lifting", exercises_url, :class => 'btn btn-warning' %>
 		<div class='loginlogout'>
 			<% if session[:user_id] %>
 		Welcome, <%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>. 
