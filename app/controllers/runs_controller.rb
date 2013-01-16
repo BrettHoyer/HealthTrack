@@ -2,7 +2,7 @@ class RunsController < ApplicationController
   # GET /runs
   # GET /runs.json
   def index
-    @runs = Run.all
+    @runs = Run.where(:user_id => session[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb

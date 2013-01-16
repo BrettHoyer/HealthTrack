@@ -3,7 +3,7 @@
 
   <% @categories.each do |category| %>
     <h3><%= category.name %></h3>
-    <%= link_to "Delete Category", category_url(category.id), :method => 'delete', :confirm => 'Are you sure?' %>
+    <%= link_to "Delete Category", category_url(category.id), :confirm => 'Are you sure?', :method => 'delete'%>
 
     <% category.exercises.each do |exercise| %>
      
@@ -22,9 +22,9 @@
               <td><%= turn.weight %></td>
               <td><%= turn.date.strftime("%m/%d/%y") %></td>
               <td>
-                 <%= link_to 'Show', turn %>
-                <%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id) %>
-                <%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <td><%= link_to 'Show', turn %></td>
+                <td><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
+                <td><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </td>
             </tr>
           <% end %>
@@ -36,5 +36,5 @@
     <br />
 
 
-  <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  
   

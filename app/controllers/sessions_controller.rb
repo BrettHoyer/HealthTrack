@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    if session[:user_id]!=nil
+      redirect_to exercises_url
+    end
   end
 
   def create

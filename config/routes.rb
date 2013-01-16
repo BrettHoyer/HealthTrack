@@ -1,10 +1,5 @@
 Meathead::Application.routes.draw do
-
-  resources :runs
-
-  resources :categories
-
-  resources :users
+  root :to => 'sessions#new'
 
   get "sessions/new"
 
@@ -12,9 +7,15 @@ Meathead::Application.routes.draw do
 
   get "sessions/destroy"
 
-  resources :turns
+  resources :runs
+
+  resources :categories
+
+  resources :user
 
   resources :exercises
+
+  resources :turns
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

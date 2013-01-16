@@ -16,5 +16,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_turn_path(@turn) %> |
-<%= link_to 'Back', turns_path %>
+<%= link_to 'Edit', edit_turn_path(@turn, :exercise_id => @turn.exercise_id) %> |
+<%= link_to 'Back', exercises_path %>

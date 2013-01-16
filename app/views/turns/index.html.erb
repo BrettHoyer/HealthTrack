@@ -16,7 +16,7 @@
     <td><%= turn.reps %></td>
     <td><%= turn.weight %></td>
     <td><%= link_to 'Show', turn %></td>
-    <td><%= link_to 'Edit', edit_turn_path(turn) %></td>
+    <td><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => turn.exercise_id) %></td>
     <td><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Turn', new_turn_path %>
+

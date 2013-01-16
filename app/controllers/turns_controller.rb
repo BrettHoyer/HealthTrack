@@ -2,7 +2,7 @@ class TurnsController < ApplicationController
   # GET /turns
   # GET /turns.json
   def index
-    @turns = Turn.all
+    @turns = User.find_by_id(session[:user_id]).turns
 
     respond_to do |format|
       format.html # index.html.erb
@@ -74,7 +74,7 @@ class TurnsController < ApplicationController
   def destroy
     @turn = Turn.find(params[:id])
     @turn.destroy
-
+ 
     respond_to do |format|
       format.html { redirect_to exercises_url }
       format.json { head :no_content }
