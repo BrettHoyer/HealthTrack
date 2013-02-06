@@ -1,35 +1,84 @@
 <script type="text/javascript">
-  $(function(){
-    new Highcharts.Chart({
-      chart: {
-        renderTo: "runs_chart"
-      },
-      title: {
-        text: "Minutes/Mile"
-      },
-      xAxis: {
-        title: {
-          text: "Day"
-        }
-      },
-      series: [{
-            data: [<% @runs.each do |run| %>
-                [(<%=run.date.year%>, <%=run.date.month%>, <%= run.date.day %>), <%= run.minutes_per_mile %>],
-                <% end %>
-             ]
-      }],
-      yAxis: {
-        title: {
-          text: "MPM"
-        }
-      },
-      series: [{
-      //   pointInterval: <%= 1.day * 1000 %>,
-      //   pointStart: <%= @runs.first.date.to_time.to_i * 1000 %>,
-        data: <%= (@runs.map { |run| run.minutes_per_mile.to_f }.inspect) %>
-      }]
+//   $(function(){
+//     new Highcharts.Chart({
+//       chart: {
+//         renderTo: "runs_chart"
+//       },
+//       title: {
+//         text: "Minutes/Mile"
+//       },
+//       xAxis: {
+//         type: 'datetime',
+//         dateTimeLabelFormats: {
+//                 day: '%e. %b',
+//                 month: '%b \'%y' 
+//             }
+//         title: {
+//           text: "Day"
+//         }
+//       },
+//       yAxis: {
+//         title: {
+//           text: "MPM"
+//         }
+//       },
+//         series: [{
+//             data: [<% @runs.each do |run| %>
+//                 [Date.UTC(<%=run.date.year%>, <%=run.date.month%>, <%= run.date.day %>), <%= run.minutes_per_mile %>],
+//                 <% end %>
+//              ]
+//       }],
+//     });
+//   });
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'runs_chart',
+                type: 'spline'
+            },
+            title: {
+                text: 'RunTracker --- Minutes Per Mile'
+            },
+            subtitle: {
+                text: 'How low can you go?'
+            },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: { // don't display the dummy year
+                    month: '%e. %b',
+                    year: '%b'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Min/Mile'
+                },
+                min: 0
+            },
+            tooltip: {
+                formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' mins/mile';
+                }
+            },
+            
+            series: [{
+                name: String("<%= "#{User.find_by_id(session[:user_id]).name}" %>"  ),
+                // Define the data points. All series have a dummy year
+                // of 1970/71 in order to be compared on the same x axis. Note
+                // that in JavaScript, months start at 0 for January, 1 for February etc.
+                data: [ <% @runs.each do |run| %>
+                [Date.UTC(<%=run.date.year%>, <%=run.date.month-1%>, <%= run.date.day %>), <%= run.minutes_per_mile %>],
+                <% end %>   
+                ]
+            }, 
+            ]
+        });
     });
-  });
+    
+});
 </script>
 <div id='runs_chart' style="width:560px; height:300px;"></div>
 <h1>Listing runs</h1>

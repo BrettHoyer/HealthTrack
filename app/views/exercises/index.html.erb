@@ -8,33 +8,46 @@
     <% category.exercises.each do |exercise| %>
      
     <div class='exercisetable'>    <h5><%= exercise.name %></h5>
-        <table border='1'>
-           <tr>
-              <th class="label">Set Number:</th> 
-              <th class="label label-info">Number of Reps:</th>
-              <th class="label label-success">Weight:</th>  
-              <th class="label label-default">Date:</th> 
-            </tr>  
-          <% exercise.turns.each do |turn| %>
-            <tr>  
-              <td><%= turn.turn_num %></td>
-              <td><%= turn.reps %></td>
-              <td><%= turn.weight %></td>
-              <td><%= turn.date.strftime("%m/%d/%y") %></td>
-              <td>
-                <td><%= link_to 'Show', turn %></td>
-                <td><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
-                <td><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </td>
+        <table>
+           
+           <thead>
+            <tr>
+             <th>Set Number</th> 
+             <th>Number of Reps</th>
+             <th>Weight</th>  
+             <th>Date</th> 
             </tr>
-          <% end %>
+          </thead>
+          <tbody>
+            <% date = 0 %>  
+            <% exercise.turns.each do |turn| %>
+              <% if date != turn.date %><br>
+              <% end %>
+              <% date = turn.date %>
+              <tr>  
+                <td class="turnnum"><%= turn.turn_num %></td>
+                <td class="turnreps"><%= turn.reps %></td>
+                <td class="turnweight"><%= turn.weight %></td>
+                <td class="turndate"><%= turn.date.strftime("%m/%d/%y") %></td>
+                 <div class="tablecontrols">
+                  <td><%= link_to 'Show', turn %></td>
+                  <td><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
+                  <td><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </div>
+              </tr>
+            <% end %>
+        </tbody>
         </table><br />
       <%= link_to "New Set", new_turn_url(:exercise_id => exercise.id), :class => 'btn btn-mini btn-danger' %>  
     </div>
     <% end %>
    <% end %> 
     <br />
+  <ul>
+    <li>hi</li>
+    <li>hello</li>
+    <li>howdy</li>
 
-
+  </ul>
   
   

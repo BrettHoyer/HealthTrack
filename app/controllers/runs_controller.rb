@@ -44,7 +44,7 @@ class RunsController < ApplicationController
 
     respond_to do |format|
       if @run.save
-        format.html { redirect_to @run, notice: 'Run was successfully created.' }
+        format.html { redirect_to runs_url, notice: 'Run was successfully created.' }
         format.json { render json: @run, status: :created, location: @run }
       else
         format.html { render action: "new" }

@@ -9,18 +9,18 @@
 <body>
   <div class='navbar-inverse'>
 	<nav class='navbar-inner'>
-		<%= link_to "New Body Part", new_category_url, :class => 'btn btn-success' %>
-		<%= link_to "New Exercise", new_exercise_url, :class => 'btn btn-warning' %>
-		<%= link_to "Running", runs_url, :class => 'btn btn-warning' %>
-		<%= link_to "Lifting", exercises_url, :class => 'btn btn-warning' %>
+		<%= link_to "New Body Part", new_category_url, :class => 'navbutton' %>
+		<%= link_to "New Exercise", new_exercise_url, :class => 'navbutton'   %>
+		<%= link_to "Running", runs_url, :class => 'navbutton'  %>
+		<%= link_to "Lifting", exercises_url, :class => 'navbutton' %>
 		<div class='loginlogout'>
 			<% if session[:user_id] %>
 		Welcome, <%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>. 
 
-		<%= link_to "Logout", sessions_destroy_url, :class => 'btn btn-primary' %>
+		<%= link_to "Logout", sessions_destroy_url, :class => 'navbutton' %>
 		
 		 <% else %>
-		<%= link_to "Login", sessions_new_url, :class => 'btn btn-primary' %>
+		<%= link_to "Login", sessions_new_url, :class => 'navbutton' %>
 		
 		<% end %>
 		</div> 
