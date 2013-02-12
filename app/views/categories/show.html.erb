@@ -1,5 +1,43 @@
 <p id="notice"><%= notice %></p>
-
+<h1><%= @category.name %></h1>
+<%= link_to "Add Exercise", new_exercise_url(:category_id => @category.id) %>
+    <%= link_to "Delete Category", category_url(@category.id), :confirm => 'Are you sure?', :method => 'delete'%>
+<% @category.exercises.each do |exercise| %>
+<div class='exercisetable'>    <h5><%= exercise.name %></h5>
+        <table>
+           
+           <thead>
+            <tr>
+             <th>Set Number</th> 
+             <th>Number of Reps</th>
+             <th>Weight</th>  
+             <th>Date</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <% date = 0 %>  
+            <% exercise.turns.each do |turn| %>
+              <% if date != turn.date %><br>
+              <% end %>
+              <% date = turn.date %>
+              <tr>  
+                <td class="turnnum"><%= turn.turn_num %></td>
+                <td class="turnreps"><%= turn.reps %></td>
+                <td class="turnweight"><%= turn.weight %></td>
+                <td class="turndate"><%= turn.date.strftime("%m/%d/%y") %></td>
+                 <div class="tablecontrols">
+                  <td><%= link_to 'Show', turn %></td>
+                  <td><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
+                  <td><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </div>
+              </tr>
+            <% end %>
+        </tbody>
+        </table><br />
+      <%= link_to "New Set", new_turn_url(:exercise_id => exercise.id), :class => 'navbutton' %>  
+      <%= link_to "Delete Exercise", exercise, method: :delete, data: { confirm: 'Are you sure?'} %>
+    </div>
+    <% end %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', exercises_path %>

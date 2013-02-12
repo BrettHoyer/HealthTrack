@@ -1,8 +1,9 @@
 
-  <h1><%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises</h1>
+  <h1><%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises abcdefghijkl</h1>
 
   <% @categories.each do |category| %>
-    <h3><%= category.name %></h3>
+    <h3><%= link_to category.name, category %></h3>
+    <%= link_to "Add Exercise", new_exercise_url(:category_id => category.id) %>
     <%= link_to "Delete Category", category_url(category.id), :confirm => 'Are you sure?', :method => 'delete'%>
 
     <% category.exercises.each do |exercise| %>
@@ -39,10 +40,10 @@
         </tbody>
         </table><br />
       <%= link_to "New Set", new_turn_url(:exercise_id => exercise.id), :class => 'navbutton' %>  
+      <%= link_to "Delete Exercise", exercise, method: :delete, data: { confirm: 'Are you sure?'} %>
     </div>
     <% end %>
    <% end %> 
     <br />
-  
   
   

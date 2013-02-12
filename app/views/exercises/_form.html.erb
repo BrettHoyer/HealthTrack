@@ -14,8 +14,7 @@
     <%= f.hidden_field :user_id, :value => session[:user_id] %>
   </div>
   <div class="field">
-    <%= f.label :category_id, "Body Part" %>
-    <%= f.collection_select :category_id, Category.where(:user_id => session[:user_id]), :id, :name %>
+    <%= f.hidden_field :category_id, :value => params[:category_id] %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
