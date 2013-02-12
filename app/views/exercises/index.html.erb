@@ -3,8 +3,9 @@
 
   <% @categories.each do |category| %>
     <h3><%= link_to category.name, category %></h3>
-    <%= link_to "Add Exercise", new_exercise_url(:category_id => category.id) %>
-    <%= link_to "Delete Category", category_url(category.id), :confirm => 'Are you sure?', :method => 'delete'%>
+    <%= link_to "-", category_url(category.id), :confirm => 'Are you sure?', :method => 'delete', :title => 'Remove Category', :class => 'buttonremove'%>
+    <%= link_to "+", new_exercise_url(:category_id => category.id), :title => 'Add Exercise', :class => 'buttonadd' %>
+    
 
     <% category.exercises.each do |exercise| %>
      
@@ -19,22 +20,16 @@
              <th>Date</th> 
             </tr>
           </thead>
-          <tbody>
-            <% date = 0 %>  
+          <tbody> 
             <% exercise.turns.each do |turn| %>
-              <% if date != turn.date %><br>
-              <% end %>
-              <% date = turn.date %>
               <tr>  
                 <td class="turnnum"><%= turn.turn_num %></td>
                 <td class="turnreps"><%= turn.reps %></td>
                 <td class="turnweight"><%= turn.weight %></td>
                 <td class="turndate"><%= turn.date.strftime("%m/%d/%y") %></td>
-                 <div class="tablecontrols">
-                  <td><%= link_to 'Show', turn %></td>
-                  <td><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
-                  <td><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </div>
+                  <td class="tablecontrols"><%= link_to 'Show', turn %></td>
+                  <td class="tablecontrols"><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
+                  <td class="tablecontrols"><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
         </tbody>
