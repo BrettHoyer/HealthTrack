@@ -1,17 +1,21 @@
 
-  <h1><%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises abcdefghijkl</h1>
+  <h1><%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises</h1>
+
+  <%= link_to "Add Category", new_category_url, :style => "display:block" %>
 
   <% @categories.each do |category| %>
     <h3><%= link_to category.name, category %></h3>
-    <%= link_to "-", category_url(category.id), :confirm => 'Are you sure?', :method => 'delete', :title => 'Remove Category', :class => 'buttonremove'%>
-    <%= link_to "+", new_exercise_url(:category_id => category.id), :title => 'Add Exercise', :class => 'buttonadd' %>
-    
+     <%= link_to "Add Exercise", new_exercise_url(:category_id => category.id), :title => 'Add Exercise' %>
+    <%= link_to "Remove Category", category_url(category.id), :confirm => 'Are you sure?', :method => 'delete', :title => 'Remove Category'%>
+
+   
+     
 
     <% category.exercises.each do |exercise| %>
-     
-    <div class='exercisetable'>    <h5><%= exercise.name %></h5>
-        <table>
-           
+      <div class='exercisetable'>
+      <h5><%= exercise.name %></h5>
+       <a href="#" id="appear" class="buttonremove">-</a>  
+        <table>   
            <thead>
             <tr>
              <th>Set Number</th> 
@@ -40,5 +44,16 @@
     <% end %>
    <% end %> 
     <br />
+    <script>
+       $(document).ready(function(){
+         $("#appear").live('click', function(event){
+          event.preventDefault();
+           var text = $(this).text() == '+' ? '-' : '+';
+           $(this).text(text);
+           $(this).toggleClass('buttonadd buttonremove');
+           $(this).nextAll().fadeToggle();
+         });
+        });
+     </script>
   
   

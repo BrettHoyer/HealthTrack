@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
-<h1><%= @category.name %></h1>
-<%= link_to "Add Exercise", new_exercise_url(:category_id => @category.id) %>
-    <%= link_to "Delete Category", category_url(@category.id), :confirm => 'Are you sure?', :method => 'delete'%>
+<h1 class="categoryheader"><%= @category.name %></h1>
+<%= link_to "+", new_exercise_url(:category_id => @category.id), :title => 'Add Exercise', :class => 'buttonadd show' %>
+    <%= link_to "-", category_url(@category.id), :confirm => 'Are you sure?', :method => 'delete', :title => 'Remove Category', :class => 'buttonremove show'%>
 <% @category.exercises.each do |exercise| %>
 <div class='exercisetable'>    <h5><%= exercise.name %></h5>
         <table>
@@ -15,21 +15,15 @@
             </tr>
           </thead>
           <tbody>
-            <% date = 0 %>  
             <% exercise.turns.each do |turn| %>
-              <% if date != turn.date %><br>
-              <% end %>
-              <% date = turn.date %>
               <tr>  
                 <td class="turnnum"><%= turn.turn_num %></td>
                 <td class="turnreps"><%= turn.reps %></td>
                 <td class="turnweight"><%= turn.weight %></td>
                 <td class="turndate"><%= turn.date.strftime("%m/%d/%y") %></td>
-                 <div class="tablecontrols">
-                  <td><%= link_to 'Show', turn %></td>
-                  <td><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
-                  <td><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </div>
+                  <td class="tablecontrols"><%= link_to 'Show', turn %></td>
+                  <td class="tablecontrols"><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
+                  <td class="tablecontrols"><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
         </tbody>
