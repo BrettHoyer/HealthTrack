@@ -1,0 +1,32 @@
+<%= form_for(@turn) do |f| %>
+  <% if @turn.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@turn.errors.count, "error") %> prohibited this turn from being saved:</h2>
+
+      <ul>
+      <% @turn.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :turn_num, 'Set Number'%><br />
+    <%= f.select :turn_num, 1..10 %>
+  </div>
+  <div class="field">
+    <%= f.label :reps %><br />
+    <%= f.select :reps, 1..100%>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.select :weight, options_for_select((10..400).step(5).to_a.map{|s| ["#{s}", s]}) %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :exercise_id %>
+  </div></br>
+   <%= f.date_select :date, :default => Date.today, :order => [:month, :day, :year] %>
+  <div class="actions">
+    <%= f.submit 'Submit Set', :class => 'navbutton' %>
+  </div>
+<% end %>

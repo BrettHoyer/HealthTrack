@@ -1,20 +1,21 @@
 
   <h1><%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises</h1>
 
-  <%= link_to "Add Category", new_category_url, :style => "display:block" %>
 
   <% @categories.each do |category| %>
     <h3><%= link_to category.name, category %></h3>
-     <%= link_to "Add Exercise", new_exercise_url(:category_id => category.id), :title => 'Add Exercise' %>
-    <%= link_to "Remove Category", category_url(category.id), :confirm => 'Are you sure?', :method => 'delete', :title => 'Remove Category'%>
-
-   
+     <%= link_to "", new_exercise_url(:category_id => category.id), :title => 'Add Exercise', :class => 'icon-plus' %>
      
 
     <% category.exercises.each do |exercise| %>
       <div class='exercisetable'>
       <h5><%= exercise.name %></h5>
-       <a href="#" id="appear" class="buttonremove">-</a>  
+       <a href="#" id="appear" class="icon-double-angle-up"></a> 
+       <%= link_to "", "#", :id => 'newset', :class => 'icon-plus' %>
+       
+       <div id='new_set' style="display:none">
+          <%= render 'turns/new_turn_form', :exercise_id => exercise.id %>
+      </div>
         <table>   
            <thead>
             <tr>
@@ -26,34 +27,38 @@
           </thead>
           <tbody> 
             <% exercise.turns.each do |turn| %>
-              <tr>  
-                <td class="turnnum"><%= turn.turn_num %></td>
-                <td class="turnreps"><%= turn.reps %></td>
-                <td class="turnweight"><%= turn.weight %></td>
-                <td class="turndate"><%= turn.date.strftime("%m/%d/%y") %></td>
-                  <td class="tablecontrols"><%= link_to 'Show', turn %></td>
-                  <td class="tablecontrols"><%= link_to 'Edit', edit_turn_path(turn, :exercise_id => exercise.id), :confirm => 'are you sure?' %></td>
-                  <td class="tablecontrols"><%= link_to 'Destroy', turn, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
+
+            <%= render 'turns/turn', :turn_var => turn %>
             <% end %>
+              
         </tbody>
-        </table><br />
-      <%= link_to "New Set", new_turn_url(:exercise_id => exercise.id), :class => 'navbutton' %>  
+        </table><br />  
       <%= link_to "Delete Exercise", exercise, method: :delete, data: { confirm: 'Are you sure?'} %>
     </div>
     <% end %>
    <% end %> 
     <br />
-    <script>
-       $(document).ready(function(){
-         $("#appear").live('click', function(event){
-          event.preventDefault();
-           var text = $(this).text() == '+' ? '-' : '+';
-           $(this).text(text);
-           $(this).toggleClass('buttonadd buttonremove');
-           $(this).nextAll().fadeToggle();
-         });
+    
+    <%= link_to "Add Muscle Group", new_category_url, :style => "display:block" %>
+
+   <script>
+      $(document).ready(function(){
+        $("#appear").live('click', function(event){
+         event.preventDefault();
+          $(this).toggleClass('icon-double-angle-down');
+          $(this).nextAll().fadeToggle();
         });
-     </script>
+       });
+    </script>
+    <script>
+      $(document).ready(function(){
+        $("#newset").live('click', function(event){
+         event.preventDefault();
+          $(this).next().fadeToggle();
+        });
+       });
+    </script>
+
+
   
   

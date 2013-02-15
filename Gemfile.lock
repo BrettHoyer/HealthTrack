@@ -54,6 +54,9 @@ GEM
     less-rails (2.2.4)
       actionpack (>= 3.1)
       less (~> 2.2.0)
+    less-rails-fontawesome (0.4.0)
+      less-rails (>= 2.1.7)
+      railties (>= 3.1.1)
     libv8 (3.3.10.4)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -123,6 +126,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   less-rails
+  less-rails-fontawesome
   pg (= 0.12.2)
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)

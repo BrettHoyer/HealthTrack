@@ -11,6 +11,7 @@ class ExercisesController < ApplicationController
   def index
     @exercises = Exercise.where(:user_id => session[:user_id])
     @categories = Category.where(:user_id => session[:user_id])
+    @turn = Turn.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -52,6 +53,7 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.save
+        format.js { render 'create' }
         format.html { redirect_to exercises_url, notice: 'Exercise was successfully created.' }
         format.json { render json: @exercise, status: :created, location: @exercise }
       else

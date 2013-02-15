@@ -3,5 +3,5 @@ class Exercise < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category
-  has_many :turns, :order => 'date desc'
+  has_many :turns, :order => 'date desc, turn_num asc'
 end

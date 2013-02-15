@@ -3,9 +3,10 @@
 <%= link_to "+", new_exercise_url(:category_id => @category.id), :title => 'Add Exercise', :class => 'buttonadd show' %>
     <%= link_to "-", category_url(@category.id), :confirm => 'Are you sure?', :method => 'delete', :title => 'Remove Category', :class => 'buttonremove show'%>
 <% @category.exercises.each do |exercise| %>
-<div class='exercisetable'>    <h5><%= exercise.name %></h5>
+<div class='exercisetable'>    
+  <h5><%= exercise.name %></h5>
+    <a href="#" id="appear" class="buttonremove">-</a>  
         <table>
-           
            <thead>
             <tr>
              <th>Set Number</th> 
@@ -35,4 +36,14 @@
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', exercises_path %>
-
+<script>
+   $(document).ready(function(){
+     $("#appear").live('click', function(event){
+      event.preventDefault();
+       var text = $(this).text() == '+' ? '-' : '+';
+       $(this).text(text);
+       $(this).toggleClass('buttonadd buttonremove');
+       $(this).nextAll().fadeToggle();
+     });
+    });
+</script>
