@@ -1,4 +1,4 @@
-
+<head>
   <h1><%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises</h1>
 
 
@@ -9,14 +9,16 @@
 
     <% category.exercises.each do |exercise| %>
       <div class='exercisetable'>
+      <%= link_to "", exercise, method: :delete, class: 'icon-trash', data: { confirm: 'Are you sure?'} %>
       <h5><%= exercise.name %></h5>
        <a href="#" id="appear" class="icon-double-angle-up"></a> 
        <%= link_to "", "#", :id => 'newset', :class => 'icon-plus' %>
-       
-       <div id='new_set' style="display:none">
+      <div id='exercise_all'> 
+       <div id='new_set'>
           <%= render 'turns/new_turn_form', :exercise_id => exercise.id %>
       </div>
-        <table>   
+
+        <table id="table_<%= exercise.id %>">   
            <thead>
             <tr>
              <th>Set Number</th> 
@@ -28,36 +30,39 @@
           <tbody> 
             <% exercise.turns.each do |turn| %>
 
-            <%= render 'turns/turn', :turn_var => turn %>
+              <%= render 'turns/turn', :turn_var => turn %>
+  
             <% end %>
               
         </tbody>
         </table><br />  
-      <%= link_to "Delete Exercise", exercise, method: :delete, data: { confirm: 'Are you sure?'} %>
+      
     </div>
+  </div>
     <% end %>
    <% end %> 
     <br />
     
     <%= link_to "Add Muscle Group", new_category_url, :style => "display:block" %>
-
+  <script>
+      $(document).ready(function(){
+        $("#newset").live('click', function(event){
+         event.preventDefault();
+          $(this).toggleClass('icon-plus icon-minus')
+          $(this).closest('.exercisetable').children('#exercise_all').children('#new_set').slideToggle(500);
+        });
+       });
+    </script>
    <script>
       $(document).ready(function(){
         $("#appear").live('click', function(event){
          event.preventDefault();
-          $(this).toggleClass('icon-double-angle-down');
-          $(this).nextAll().fadeToggle();
+          $(this).toggleClass('icon-double-angle-down icon-double-angle-up');
+          $(this).closest('.exercisetable').children('#exercise_all').children('table').fadeToggle(100);
         });
        });
     </script>
-    <script>
-      $(document).ready(function(){
-        $("#newset").live('click', function(event){
-         event.preventDefault();
-          $(this).next().fadeToggle();
-        });
-       });
-    </script>
+    
 
 
   

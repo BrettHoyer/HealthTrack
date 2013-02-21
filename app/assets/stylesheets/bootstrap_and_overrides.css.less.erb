@@ -51,6 +51,17 @@
   font-style: normal;
 }
 
+a {
+	color: #545F6D;
+	&:hover{
+	background: rgba(0, 255, 255, .2);
+	text-decoration: none;
+	}
+	&:active{
+	background-color:green;
+	}
+}
+
 /*Navbar*/
 
 .navbar{
@@ -77,13 +88,26 @@
 	background: -webkit-linear-gradient(#687587, #404853);
 }
 
-.navbutton, .navbutton:visited{
+.smallbutton{
+	border: 1px solid black;
+	border-radius: 5px;
+	-webkit-box-shadow: inset -1px 0 10px rgba(0, 0, 0, 0.4);
+	padding: 2px 4px 2px 3px;
+	font-size: 14px;
+	font-family: 'Molle';
+	font-style: italic;
+	font-weight: 400;
+	background: -webkit-linear-gradient(#687587, #404853);
+}
+
+.navbutton, .navbutton:visited, .smallbutton{
 	color: white;
 	text-shadow: 2px 1px 0 rgba(0, 0, 0, 0.6);
 }
 
-.navbutton:hover{
+a.navbutton:hover{
 	color: rgba(0, 255, 255, .8);
+	background: -webkit-linear-gradient(#687587, #404853);
 	text-decoration: none;
 }
 
@@ -92,12 +116,13 @@
 
 
 .exercisetable{
-	margin-left:100px;
-	margin-bottom: 20px;
+	
+	margin-bottom: 0px;
 }
 
 
 table{
+	margin-left:100px;
 	border-collapse: separate;
 	border-spacing: 0;
 }
@@ -226,7 +251,7 @@ h5{
 	color: white
 }
 
-.icon-plus{
+.icon-plus, .icon-minus{
 	position: relative;
 	bottom: 3px;
 	border: 1px solid rgba(0, 255, 255, .7);
@@ -242,6 +267,11 @@ h5{
 	color: white;
 	text-align: center;
 }
+
+.exercisetable > .icon-trash{
+	margin-left: 100px;
+}
+
 .buttonadd, 
 .buttonremove {
 	display: inline-block;
@@ -279,21 +309,11 @@ body{
 }
 
 .container-fluid{
-	padding: 10px 10px 50px 10px;		
+	position: block;
+	padding: 10px 10px 10px 10px;		
 	-webkit-box-shadow: 0px 0px 10px rgba(0, 255, 255, .8);
 }
 
-a{
-	color: #545F6D;
-	&:hover{
-	background-color: rgba(0, 255, 255, .2);
-	text-decoration: none;
-	}
-	&:active{
-	background-color:green;
-	}
-
-}
 
 #run_distance:focus{
 	border: 1px solid green;
@@ -303,3 +323,52 @@ a{
 	display: none;
 }
 
+@media all and (min-width: 800px){
+	body{
+		/*font-size: 100px;*/
+	}
+}
+
+#turn_turn_num, #turn_reps, #turn_weight, #turn_date_1i, #turn_date_2i, #turn_date_3i{
+	width: 100px;
+	height: 25px;
+	margin: 3px 0;
+	display: inline-block;
+	position: relative;
+}
+
+#new_set{
+	display: none;
+	margin: 0 0 5px 100px;
+}
+
+#new_set .field,  #new_set .actions{
+	display: inline-block;
+}
+
+div.field{
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+}
+
+option{
+	text-align: center
+}
+
+.turnedit{
+	margin-left: 100px;
+	display: block;
+}
+
+.turnedit .actions{
+	display: inline-block;
+}
+
+form{
+	margin: 5px 5px 5px 0px; 
+}
+
+html {
+    overflow-y: scroll;
+}

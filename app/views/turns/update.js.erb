@@ -1,0 +1,2 @@
+$('#turn_<%= @turn.id %>').replaceWith("<%= escape_javascript(render 'turn', :turn_var => @turn, :exercise_id => @turn.exercise_id) %>");
+$('#edit_turn_<%= @turn.id %>').remove();

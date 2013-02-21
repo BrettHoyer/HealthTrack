@@ -1,3 +1,2 @@
-$("thead").after("<%= escape_javascript(render('turn', :turn_var => @turn)) %>");
-
+$("#table_<%= @turn.exercise_id %> thead").after("<%= escape_javascript(render('turn', :turn_var => @turn)) %>");
 

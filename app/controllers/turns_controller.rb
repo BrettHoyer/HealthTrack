@@ -35,6 +35,11 @@ class TurnsController < ApplicationController
   # GET /turns/1/edit
   def edit
     @turn = Turn.find(params[:id])
+
+    respond_to do |format|
+      format.js { render 'edit' }
+      format.html { render 'edit' }
+    end  
   end
 
   # POST /turns
@@ -61,6 +66,7 @@ class TurnsController < ApplicationController
 
     respond_to do |format|
       if @turn.update_attributes(params[:turn])
+        format.js { render 'update' }
         format.html { redirect_to exercises_url, notice: 'Turn was successfully updated.' }
         format.json { head :no_content }
       else
@@ -77,6 +83,7 @@ class TurnsController < ApplicationController
     @turn.destroy
  
     respond_to do |format|
+      format.js {render 'destroy'}
       format.html { redirect_to exercises_url }
       format.json { head :no_content }
     end

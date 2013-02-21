@@ -11,7 +11,7 @@ Meathead::Application.routes.draw do
 
   resources :categories
 
-  resources :user
+  resources :users
 
   resources :exercises
 

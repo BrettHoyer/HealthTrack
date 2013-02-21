@@ -1,0 +1,2 @@
+$('#turn_<%= @turn.id %>').hide();
+$('#table_<%= @turn.exercise_id %>').before("<div class='turnedit'><%= escape_javascript(render 'turns/form', :exercise_id => @turn.exercise_id) %></div>");
