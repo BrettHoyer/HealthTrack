@@ -1,0 +1,5 @@
+$('#category_<%= @exercise.category_id %>').closest('#category_section').after("<%= escape_javascript(render('exercises/exercise_table', :exercise => @exercise )) %>");
+$('#category_<%= @exercise.category_id %>').closest('#category_section').children('#newexercise').css("display", "none");
+$('#category_<%= @exercise.category_id %>').siblings('#exercise_new').toggleClass('icon-plus icon-minus');
+$('#category_<%= @exercise.category_id %>').siblings('#newexercise').children('form').children('div').children('input#exercise_name').val('');
+$('#exercise_<%= @exercise.id %>').effect('highlight', 1000, "easeInOutElastic");

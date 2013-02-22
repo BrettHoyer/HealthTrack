@@ -9,6 +9,7 @@ class ExercisesController < ApplicationController
   # GET /exercises
   # GET /exercises.json
   def index
+    @exercise = Exercise.new
     @exercises = Exercise.where(:user_id => session[:user_id])
     @categories = Category.where(:user_id => session[:user_id])
     @turn = Turn.new
@@ -50,6 +51,7 @@ class ExercisesController < ApplicationController
   # POST /exercises.json
   def create
     @exercise = Exercise.new(params[:exercise])
+    @turn = Turn.new
 
     respond_to do |format|
       if @exercise.save
@@ -86,6 +88,7 @@ class ExercisesController < ApplicationController
     @exercise.destroy
 
     respond_to do |format|
+      format.js { render 'destroy'}
       format.html { redirect_to exercises_url }
       format.json { head :no_content }
     end

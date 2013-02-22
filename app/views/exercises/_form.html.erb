@@ -1,4 +1,4 @@
-<div class='hero-unit'><%= form_for(@exercise) do |f| %>
+<%= form_for @exercise, :remote => true do |f| %>
   <% if @exercise.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
@@ -14,18 +14,12 @@
     <%= f.hidden_field :user_id, :value => session[:user_id] %>
   </div>
   <div class="field">
-    <%= f.hidden_field :category_id, :value => params[:category_id] %>
+    <%= f.hidden_field :category_id, :value => category_id %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-    <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date, :default => Date.today, :order => [:month, :day, :year] %>
+    <%= f.text_field :name, placeholder: "Exercise Name" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Exercise", :class => 'smallbutton' %>
   </div>
 <% end %>
-</div>
