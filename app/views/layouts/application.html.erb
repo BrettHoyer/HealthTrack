@@ -15,7 +15,7 @@
 		<%= link_to "Lifting", exercises_url, :class => 'navbutton' %>
 		<div class='loginlogout'>
 			<% if session[:user_id] %>
-		Welcome, <%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>. 
+		<p>Welcome, <%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>.</p> 
 
 		<%= link_to "Logout", sessions_destroy_url, :class => 'navbutton' %>
 		

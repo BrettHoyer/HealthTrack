@@ -3,6 +3,6 @@
   <td class='turnreps'><%= turn_var.reps %></td>
   <td class='turnweight'><%= turn_var.weight %></td>
   <td class='turndate'><%= turn_var.date.strftime("%m/%d/%y") %></td>
-  <td class="tablecontrols"><i class="icon-edit"></i> <%= link_to 'Edit', edit_turn_path(turn_var, :exercise_id => turn_var.exercise_id), data: { confirm: 'Are you sure?' }, :remote => true %></td>
-  <td class="tablecontrols"><i class="icon-trash"></i> <%= link_to 'Destroy',turn_var, :exercise_id => turn_var.exercise_id, id: "dialog-confirm", method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
+  <td class="tablecontrols"><%= link_to '', edit_turn_path(turn_var, :exercise_id => turn_var.exercise_id), class: 'icon-edit', data: { confirm: 'Are you sure?' }, :remote => true %></td>
+  <td class="tablecontrols"><%= link_to '',turn_var, :exercise_id => turn_var.exercise_id, id: "dialog-confirm", class: "icon-trash", method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
 </tr>

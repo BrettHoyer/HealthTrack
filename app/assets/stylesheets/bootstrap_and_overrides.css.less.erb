@@ -211,6 +211,9 @@ h3{
 	font-weight: 400; 
 	line-height: 30px;
 	vertical-align: middle;
+	&:hover{
+	-webkit-border-radius: 8px;
+	}
 }
 
 h5{
@@ -327,11 +330,6 @@ body{
 	display: none;
 }
 
-@media all and (min-width: 800px){
-	body{
-		/*font-size: 100px;*/
-	}
-}
 
 #turn_turn_num, #turn_reps, #turn_weight, #turn_date_1i, #turn_date_2i, #turn_date_3i{
 	width: 100px;
@@ -384,4 +382,80 @@ html {
 
 #newexercise .actions{
 	display: inline;
+}
+
+@media all and (max-width: 500px){
+	html{
+
+	}
+	body{
+		margin: auto;
+		padding: 0;
+		width: 400px;
+	}
+
+	.container-fluid{
+		margin: 0 auto;
+	}
+
+	table{
+		margin-left: 0px;
+	}
+	[class^="icon-"]::before, [class*=" icon-"]::before {
+	text-align: center;
+	display: inline;
+	}
+
+	.exercisetable{
+		margin-bottom: 7px;
+	}
+
+	.exercisetable > .icon-trash{
+	margin-left: 0px;
+	}
+
+	#new_set{
+		margin-left: 0px
+	}
+
+	#turn_turn_num, #turn_reps, #turn_weight, #turn_date_1i, #turn_date_2i, #turn_date_3i{
+	width: 50px;
+	height: 25px;
+	margin: 3px 0;
+	display: inline-block;
+	position: relative;
+	}
+
+	#newexercise div {
+		display: block
+	}
+
+	#exerciseall{
+		margin:0;
+		padding:0;
+	}
+
+	th{
+		vertical-align: middle;
+		padding: 3px; 
+		font-size: 14px;
+	}
+
+	td{
+		padding: 0px
+	}
+
+	.navbutton{
+		padding: 2px 3px 2px 3px;
+		font-size: 14px;
+	}
+
+	nav p{
+		display: none;
+	}
+
+	h1{
+		font-size: 16px;
+	}
+
 }

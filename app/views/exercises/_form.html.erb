@@ -17,7 +17,7 @@
     <%= f.hidden_field :category_id, :value => category_id %>
   </div>
   <div class="field">
-    <%= f.text_field :name, placeholder: "Exercise Name" %>
+    <%= f.text_field :name, placeholder: "Exercise Name", :cols => '5' %>
   </div>
   <div class="actions">
     <%= f.submit "Create Exercise", :class => 'smallbutton' %>
