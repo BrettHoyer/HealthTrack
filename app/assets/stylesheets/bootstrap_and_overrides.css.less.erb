@@ -76,6 +76,10 @@ a {
 	float:right;
 }
 
+nav p{
+	display: inline;
+}
+
 .navbutton {
 	border: 1px solid black;
 	border-radius: 5px;
@@ -384,14 +388,15 @@ html {
 	display: inline;
 }
 
-@media all and (max-width: 500px){
-	html{
-
-	}
+@media only screen and (max-width: 320px){
+	@viewport {
+ 	 width: device-width;
+  	zoom: 1.5;
+}
 	body{
 		margin: auto;
 		padding: 0;
-		width: 400px;
+		width: 300px;
 	}
 
 	.container-fluid{
