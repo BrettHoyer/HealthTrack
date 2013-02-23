@@ -1,12 +1,14 @@
-<%= form_tag '/sessions/create', :method => 'post' do %>
+<div class='login-form'>
+	<%= form_tag '/sessions/create', :method => 'post' do %>
 
-<%= label_tag :email, "Email:" %>
-<%= text_field_tag :email %>
+	<%= label_tag :email, "Email:" %>
+	<%= text_field_tag :email %><br />
 
-<%= label_tag :password, "Password:" %>
-<%= text_field_tag :password %>
+	<%= label_tag :password, "Password:" %>
+	<%= password_field_tag :password %><br />
 
-<%= submit_tag "Enter" %>
-<% end %>
+	<%= submit_tag "Enter", class: 'smallbutton'  %>
+	<% end %>
 
-<%= link_to "or Create Account", new_user_url %>
+	<%= link_to "or Create Account", new_user_url %>
+</div>
