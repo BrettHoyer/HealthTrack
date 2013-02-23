@@ -388,11 +388,11 @@ html {
 	display: inline;
 }
 
-@media only screen and (max-width: 320px){
+@media only screen and (max-width: 400px){
 	body{
 		margin: auto;
 		padding: 0;
-		width: 480px;
+		width: 350px;
 	}
 
 	.container-fluid{
@@ -408,11 +408,12 @@ html {
 	}
 
 	.exercisetable{
+		margin-left: 0;
 		margin-bottom: 7px;
 	}
 
 	.exercisetable > .icon-trash{
-	margin-left: 0px;
+	margin-left: 20px;
 	}
 
 	#new_set{
@@ -456,7 +457,52 @@ html {
 	}
 
 	h1{
-		font-size: 16px;
+		font-size: 36px;
+	}
+
+	h3{
+		font-size:28px;
+		margin-left: 0px;
+	}
+
+	h5{
+		font-size: 18px;
+	}
+
+	.icon-plus, .icon-minus{
+	position: relative;
+	margin-left: 5px;
+	bottom: 3px;
+	border: 1px solid rgba(0, 255, 255, .7);
+	-webkit-box-shadow: 0 0 3px 1px black;
+	color: white;
+	background: #545F6D;
+	line-height: 50px;
+	width: 50px;
+	height: 50px;
+	font-size: 12px;
+	padding: 7px 9px;
+	border-radius: 25px;
+	color: white;
+	text-align: center;
+	}
+
+
+	.icon-double-angle-up, .icon-double-angle-down{
+	position: relative;
+	margin-left: 5px;
+	bottom: 3px;
+	border: 1px solid rgba(0, 255, 255, .7);
+	-webkit-box-shadow: 0 0 3px 1px black;
+	color: white;
+	background: #545F6D;
+	line-height: 50px;
+	width: 50px;
+	height: 50px;
+	font-size: 12px;
+	padding: 7px 10px;
+	border-radius: 25px;
+	color: white
 	}
 
 }
