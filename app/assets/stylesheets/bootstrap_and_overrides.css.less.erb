@@ -115,6 +115,12 @@ a.navbutton:hover{
 	text-decoration: none;
 }
 
+a.navbutton:visted{
+	color: white;
+	background: -webkit-linear-gradient(#687587, #404853);
+	text-decoration: none;
+}
+
 
 /*Tables*/
 
@@ -319,11 +325,13 @@ body{
 
 }
 
-.new-user-form, .login-form{
+/*Login and Signup Forms*/
+
+.new-user-form{
 	position: relative;
 	margin: 10px auto;
 	padding: 5px;
-	width: 400px;
+	width: 300px;
 	background: lightgrey;
 	-webkit-box-shadow: inset 0px 0px 3px 1px grey;
 	border-radius: 6px;
@@ -545,6 +553,15 @@ html {
 	padding: 7px 10px;
 	border-radius: 25px;
 	color: white
+	}
+
+	.new-user-form, .login-form{
+		margin: 0;
+		width: auto;
+		font-size: 12px;
+	}
+	.new-user-form input, .login-form input{
+		width: 150px;
 	}
 
 }
