@@ -3,23 +3,13 @@
   <% @categories.each do |category| %>
   <div id="category_section">
     <h3 id='category_<%= category.id %>'><%= link_to category.name, category %></h3>
-     <a href="#" title = 'Add Exercise' id = 'exercise_new' class = 'icon-plus'></a>
-      <div id="newexercise" style="display:none">
-        <%= render 'exercises/form', :category_id => category.id %>
-      </div>
   </div>           
 
     <% category.exercises.each do |exercise| %>
       <div class='exercisetable' id="exercise_<%= exercise.id %>">
-      <%= link_to "", exercise, method: :delete, class: 'icon-trash', data: { confirm: 'Are you sure?'}, :remote => true %>
       <h5><%= exercise.name %></h5>
        <a href="#" id="appear" class="icon-double-angle-up"></a> 
-       <%= link_to "", "#", :id => 'newset', :class => 'icon-plus' %>
       <div id='exercise_all'> 
-       <div id='new_set'>
-          <%= render 'turns/new_turn_form', :exercise_id => exercise.id %>
-      </div>
-
         <table id="table_<%= exercise.id %>">   
            <thead>
             <tr>
@@ -32,7 +22,12 @@
           <tbody> 
             <% exercise.turns.each do |turn| %>
 
-              <%= render 'turns/turn', :turn_var => turn %>
+              <tr class="turn_row" id="turn_<%= turn.id %>">
+              <td class='turnnum'><%= turn.turn_num %></td>
+              <td class='turnreps'><%= turn.reps %></td>
+              <td class='turnweight'><%= turn.weight %></td>
+              <td class='turndate'><%= turn.date.strftime("%m/%d/%y") %></td>
+              </tr>
   
             <% end %>
               
@@ -44,8 +39,6 @@
     <% end %>
    <% end %> 
     <br />
-    
-    <%= link_to "Add Muscle Group", new_category_url, :style => "display:block" %>
  
 
   <script>
