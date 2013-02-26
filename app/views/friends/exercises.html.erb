@@ -1,0 +1,77 @@
+<h1><%= @friend.name.split(' ').map {|w| w.capitalize }.join(' ') %>'s Exercises</h1>
+
+  <% @categories.each do |category| %>
+  <div id="category_section">
+    <h3 id='category_<%= category.id %>'><%= link_to category.name, category %></h3>
+     <a href="#" title = 'Add Exercise' id = 'exercise_new' class = 'icon-plus'></a>
+      <div id="newexercise" style="display:none">
+        <%= render 'exercises/form', :category_id => category.id %>
+      </div>
+  </div>           
+
+    <% category.exercises.each do |exercise| %>
+      <div class='exercisetable' id="exercise_<%= exercise.id %>">
+      <%= link_to "", exercise, method: :delete, class: 'icon-trash', data: { confirm: 'Are you sure?'}, :remote => true %>
+      <h5><%= exercise.name %></h5>
+       <a href="#" id="appear" class="icon-double-angle-up"></a> 
+       <%= link_to "", "#", :id => 'newset', :class => 'icon-plus' %>
+      <div id='exercise_all'> 
+       <div id='new_set'>
+          <%= render 'turns/new_turn_form', :exercise_id => exercise.id %>
+      </div>
+
+        <table id="table_<%= exercise.id %>">   
+           <thead>
+            <tr>
+             <th>Set Number</th> 
+             <th>Number of Reps</th>
+             <th>Weight</th>  
+             <th>Date</th> 
+            </tr>
+          </thead>
+          <tbody> 
+            <% exercise.turns.each do |turn| %>
+
+              <%= render 'turns/turn', :turn_var => turn %>
+  
+            <% end %>
+              
+        </tbody>
+        </table><br />  
+      
+    </div>
+  </div>
+    <% end %>
+   <% end %> 
+    <br />
+    
+    <%= link_to "Add Muscle Group", new_category_url, :style => "display:block" %>
+ 
+
+  <script>
+      $(document).ready(function(){
+        $("#newset").live('click', function(event){
+         event.preventDefault();
+          $(this).toggleClass('icon-plus icon-minus')
+          $(this).closest('.exercisetable').children('#exercise_all').children('#new_set').slideToggle(300);
+        });
+       });
+    </script>
+   <script>
+      $(document).ready(function(){
+        $("#appear").live('click', function(event){
+         event.preventDefault();
+          $(this).toggleClass('icon-double-angle-down icon-double-angle-up');
+          $(this).closest('.exercisetable').children('#exercise_all').children('table').fadeToggle(300);
+        });
+       });
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('#exercise_new').live('click', function(event){
+          event.preventDefault();
+          $(this).toggleClass('icon-plus icon-minus');
+          $(this).closest('#category_section').children('#newexercise').slideToggle(300);
+        });
+      });
+    </script>

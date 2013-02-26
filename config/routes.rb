@@ -7,6 +7,9 @@ Meathead::Application.routes.draw do
 
   get "sessions/destroy"
 
+  get "friends/index", :as => 'friends'
+  get "friends/exercises", :as => 'friends_exercises'
+
   resources :runs
 
   resources :categories

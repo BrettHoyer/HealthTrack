@@ -15,6 +15,7 @@
   <nav class='navbar'>
 		<%= link_to "Running", runs_url, :class => 'navbutton'  %>
 		<%= link_to "Lifting", exercises_url, :class => 'navbutton' %>
+		<%= link_to "Friends", friends_url, :class => 'navbutton' %>
 		<div class='loginlogout'>
 			<% if session[:user_id] %>
 		<p>Welcome, <%= User.find_by_id(session[:user_id]).name.split(' ').map {|w| w.capitalize }.join(' ') %>.</p> 
