@@ -54,11 +54,9 @@
 a {
 	color: #545F6D;
 	&:hover{
+	color: #545F6D;
 	background: rgba(0, 255, 255, .2);
 	text-decoration: none;
-	}
-	&:active{
-	background-color:green;
 	}
 }
 
@@ -109,16 +107,13 @@ nav p{
 	text-shadow: 2px 1px 0 rgba(0, 0, 0, 0.6);
 }
 
+
 a.navbutton:hover{
 	color: rgba(0, 255, 255, .8);
 	background: -webkit-linear-gradient(#687587, #404853);
 	text-decoration: none;
-}
 
-a.navbutton:visited{
-	color: white;
-	background: -webkit-linear-gradient(#687587, #404853);
-	text-decoration: none;
+
 }
 
 
@@ -168,7 +163,6 @@ th:last-child{
 
 
 td{
-	&.turnnum, &.turnreps, &.turnweight, &.turndate, &.tablecontrols{
 	font-family: 'FontAwesome';
 	padding: 8px;
 	border-bottom: 1px solid #c6c9cc;
@@ -178,8 +172,7 @@ td{
  	color: #545F6D;
 	text-align: center;
 	vertical-align: middle;
- 	}
-}	
+ 	}	
 
 
 tr:nth-child(even) td {
@@ -366,7 +359,12 @@ body{
 
 
 
-
+.container-yield:before,
+.container-yield:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
 
 
 .container-yield{
@@ -438,6 +436,10 @@ html {
 	display: inline;
 }
 
+.runs_chart{
+	margin: 0 100px
+
+}
 
 /*Mobile Version*/
 
@@ -583,6 +585,11 @@ html {
 	}
 	.new-user-form input, .login-form input{
 		width: 150px;
+	}
+
+	#friends-form .navbutton{
+		position: relative;
+		bottom: 5px;
 	}
 
 }

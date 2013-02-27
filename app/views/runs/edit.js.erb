@@ -1,0 +1,2 @@
+$('#run_<%= @run.id %>').hide();
+$('table').before("<%= escape_javascript(render('inline_run_form', :run => @run)) %>")

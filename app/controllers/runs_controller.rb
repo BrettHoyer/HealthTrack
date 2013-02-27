@@ -3,7 +3,7 @@ class RunsController < ApplicationController
   # GET /runs.json
   def index
     @runs = Run.where(:user_id => session[:user_id])
-
+    @run = Run.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @runs }
@@ -35,6 +35,11 @@ class RunsController < ApplicationController
   # GET /runs/1/edit
   def edit
     @run = Run.find(params[:id])
+
+    respond_to do |format|
+      format.js { render 'edit' }
+      format.html { render 'edit' }
+    end  
   end
 
   # POST /runs
@@ -44,6 +49,7 @@ class RunsController < ApplicationController
 
     respond_to do |format|
       if @run.save
+        format.js { render 'create' }
         format.html { redirect_to runs_url, notice: 'Run was successfully created.' }
         format.json { render json: @run, status: :created, location: @run }
       else
@@ -60,6 +66,7 @@ class RunsController < ApplicationController
 
     respond_to do |format|
       if @run.update_attributes(params[:run])
+        format.js {render 'update'}
         format.html { redirect_to @run, notice: 'Run was successfully updated.' }
         format.json { head :no_content }
       else
@@ -76,6 +83,7 @@ class RunsController < ApplicationController
     @run.destroy
 
     respond_to do |format|
+      format.js {render 'destroy'}
       format.html { redirect_to runs_url }
       format.json { head :no_content }
     end

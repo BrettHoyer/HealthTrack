@@ -1,0 +1,2 @@
+$('#run_<%= @run.id %>').replaceWith("<%= escape_javascript(render('run', :run => @run)) %>");
+$('#run_form').remove();

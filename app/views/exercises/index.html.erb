@@ -45,8 +45,10 @@
    <% end %> 
     <br />
     
-    <%= link_to "Add Muscle Group", new_category_url, :style => "display:block" %>
- 
+    <%= link_to "Add Muscle Group", new_category_url, :style => "display:inline-block", :class => 'smallbutton', :id => 'new_muscle' %>
+    <div id='new_muscle_form', style="display:none">
+      <%= render 'categories/form' %> 
+    </div>
 
   <script>
       $(document).ready(function(){
@@ -72,6 +74,14 @@
           event.preventDefault();
           $(this).toggleClass('icon-plus icon-minus');
           $(this).closest('#category_section').children('#newexercise').slideToggle(300);
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('#new_muscle').live('click', function(event){
+          event.preventDefault();
+          $('#new_muscle_form').slideToggle();
         });
       });
     </script>

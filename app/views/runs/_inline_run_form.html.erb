@@ -1,3 +1,4 @@
+  <div id="run_form">
   <%= form_for @run, :remote => true do |f| %>
   <% if @run.errors.any? %>
     <div id="error_explanation">
@@ -30,3 +31,4 @@
     <%= f.submit "Submit", :class => 'smallbutton' %>
   </div>
 <% end %>
+</div>

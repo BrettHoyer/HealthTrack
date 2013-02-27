@@ -1,0 +1,8 @@
+ <tr id="run_<%= run.id %>">
+    <td><%= run.distance %></td>
+    <td><%= run.time %></td>
+    <td><%= run.minutes_per_mile %></td>
+    <td><%= run.date %></td>
+    <td><%= link_to '', edit_run_path(run), :class => 'icon-edit', :remote => true %></td>
+    <td><%= link_to '', run_url(run.id), :class => 'icon-trash', :remote => true, :method => "delete", data: { confirm: 'Are you sure?' } %></td>
+ </tr>

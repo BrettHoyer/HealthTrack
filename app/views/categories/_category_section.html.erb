@@ -1,0 +1,7 @@
+<div id="category_section">
+    <h3 id='category_<%= @category.id %>'><%= link_to @category.name, @category %></h3>
+     <a href="#" title = 'Add Exercise' id = 'exercise_new' class = 'icon-plus'></a>
+      <div id="newexercise" style="display:none">
+        <%= render 'exercises/form', :category_id => @category.id %>
+      </div>
+</div>         

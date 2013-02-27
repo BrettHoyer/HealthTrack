@@ -1,4 +1,6 @@
-<%= form_tag '/friends/exercises', :method => 'get' do %>
+<div id='friends-form'>
+	<%= form_tag '/friends/exercises', :method => 'get' do %>
 	<%= select_tag "Friends", options_from_collection_for_select(@friends, 'id', "name") %>
 	<%= submit_tag "Go", :class => 'navbutton' %>
 <% end %>
+</div>

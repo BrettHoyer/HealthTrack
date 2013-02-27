@@ -1,0 +1,3 @@
+$('h1').after("<%= escape_javascript(render('categories/category_section', :exercise => @exercise)) %>");
+$('#new_muscle_form').children('form').children('div').children('input#category_name').val('');
+$('#new_muscle_form').hide();

@@ -13,7 +13,8 @@ class ExercisesController < ApplicationController
     @exercises = Exercise.where(:user_id => session[:user_id])
     @categories = Category.where(:user_id => session[:user_id])
     @turn = Turn.new
-
+    @category= Category.new
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @exercises }

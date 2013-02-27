@@ -42,8 +42,11 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(params[:category])
 
+    @exercise = Exercise.new
+
     respond_to do |format|
       if @category.save
+        format.js { render 'create'}
         format.html { redirect_to exercises_url, notice: 'Category was successfully created.' }
         format.json { render json: @category, status: :created, location: @category }
       else
