@@ -49,39 +49,37 @@
     <div id='new_muscle_form', style="display:none">
       <%= render 'categories/form' %> 
     </div>
+<script>
+    eventHandler = {
+      handleMuscleClick: function(e){
+        e.preventDefault();
+          $('#new_muscle_form').slideToggle();
+      }
+    }
+  </script>
 
-  <script>
-      $(document).ready(function(){
-        $("#newset").live('click', function(event){
-         event.preventDefault();
-          $(this).toggleClass('icon-plus icon-minus')
-          $(this).closest('.exercisetable').children('#exercise_all').children('#new_set').slideToggle(300);
-        });
-       });
-    </script>
-   <script>
-      $(document).ready(function(){
-        $("#appear").live('click', function(event){
-         event.preventDefault();
-          $(this).toggleClass('icon-double-angle-down icon-double-angle-up');
-          $(this).closest('.exercisetable').children('#exercise_all').children('table').fadeToggle(300);
-        });
-       });
-    </script>
     <script>
       $(document).ready(function(){
+        $('#new_muscle').live('click', function(event){
+          //event.preventDefault();
+          //$('#new_muscle_form').slideToggle();
+          eventHandler.handleMuscleClick(event);
+        });
         $('#exercise_new').live('click', function(event){
           event.preventDefault();
           $(this).toggleClass('icon-plus icon-minus');
           $(this).closest('#category_section').children('#newexercise').slideToggle(300);
         });
-      });
-    </script>
-    <script>
-      $(document).ready(function(){
-        $('#new_muscle').live('click', function(event){
-          event.preventDefault();
-          $('#new_muscle_form').slideToggle();
+        
+        $("#appear").live('click', function(event){
+         event.preventDefault();
+          $(this).toggleClass('icon-double-angle-down icon-double-angle-up');
+          $(this).closest('.exercisetable').children('#exercise_all').children('table').fadeToggle(300);
+        });
+        $("#newset").live('click', function(event){
+         event.preventDefault();
+          $(this).toggleClass('icon-plus icon-minus')
+          $(this).closest('.exercisetable').children('#exercise_all').children('#new_set').slideToggle(300);
         });
       });
     </script>
